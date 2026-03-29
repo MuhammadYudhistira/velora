@@ -1,35 +1,108 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { tabsLeft, tabsRight } from "@/constants/data";
+import { icons } from "@/constants/icons";
+import { components } from "@/constants/theme";
+import clsx from "clsx";
+import { Tabs } from "expo-router";
+import React from "react";
+import { Image, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+const tabBar = components.tabBar;
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout = () => {
+    const insets = useSafeAreaInsets();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
-}
+    const TabIcon = ({ focused, icon }: TabIconProps) => {
+        return (
+            <View className="tabs-icon">
+                <View className={clsx("tabs-pill", focused && "tabs-active")}>
+                    <Image source={icon} className="tabs-glyph" />
+                </View>
+            </View>
+        );
+    };
+
+    const TabAddIcon = ({ focused, icon }: TabIconProps) => {
+        return (
+            <View className="tabs-icon">
+                <View
+                    className={clsx(
+                        "size-14 bg-[#C16249] items-center justify-center rounded-full bottom-6",
+                        focused && "bg-[#C16249]/80",
+                    )}
+                >
+                    <Image source={icon} className="size-7" />
+                </View>
+            </View>
+        );
+    };
+
+    return (
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarLabelStyle: {
+                    top: -4,
+                    fontSize: 8,
+                    color: "#000000",
+                    fontFamily: "PlayfairDisplay-Regular",
+                },
+                tabBarStyle: {
+                    position: "absolute",
+                    bottom: Math.max(insets.bottom, tabBar.horizontalInset),
+                    height: tabBar.height,
+                    marginHorizontal: tabBar.horizontalInset,
+                    borderRadius: tabBar.radius,
+                    backgroundColor: "#FFFEFC",
+                    borderTopWidth: 0,
+                    elevation: 0,
+                },
+                tabBarItemStyle: {
+                    paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6,
+                },
+                tabBarIconStyle: {
+                    width: tabBar.iconFrame,
+                    height: tabBar.iconFrame,
+                    alignItems: "center",
+                },
+            }}
+        >
+            {tabsLeft.map((tab) => (
+                <Tabs.Screen
+                    key={tab.name}
+                    name={tab.name}
+                    options={{
+                        title: tab.title,
+                        tabBarIcon: ({ focused }) => (
+                            <TabIcon focused={focused} icon={tab.icon} />
+                        ),
+                    }}
+                />
+            ))}
+            <Tabs.Screen
+                name={"add"}
+                options={{
+                    title: "Add",
+                    tabBarIcon: ({ focused }) => (
+                        <TabAddIcon focused={focused} icon={icons.add} />
+                    ),
+                }}
+            />
+            {tabsRight.map((tab) => (
+                <Tabs.Screen
+                    key={tab.name}
+                    name={tab.name}
+                    options={{
+                        title: tab.title,
+                        tabBarIcon: ({ focused }) => (
+                            <TabIcon focused={focused} icon={tab.icon} />
+                        ),
+                    }}
+                />
+            ))}
+        </Tabs>
+    );
+};
+
+export default TabLayout;

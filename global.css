@@ -1,0 +1,63 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+@theme {
+    /* Base */
+    --color-background: #fcf9ef;
+    --color-card: #ffffff;
+    --color-border: #e8e5df;
+
+    /* Primary */
+    --color-primary: #ffdbd2;
+    --color-primary-light: #f2a08b;
+    --color-primary-dark: #c9654d;
+
+    /* Secondary */
+    --color-secondary: #3d405b;
+    --color-secondary-light: #5a5f7a;
+
+    /* Tertiary */
+    --color-tertiary: #19a992;
+    --color-tertiary-light: #4ed9b8;
+
+    /* Text */
+    --color-text-primary: #2b2b2b;
+    --color-text-secondary: #7a7a7a;
+    --color-text-muted: #a0a0a0;
+
+    /* Finance */
+    --color-income: #2ecc71;
+    --color-expense: #e74c3c;
+
+    /* Status */
+    --color-success: #4caf50;
+    --color-warning: #f4a261;
+    --color-danger: #e76f51;
+
+    /* Accent Soft Colors */
+    --color-accent-yellow: #f6e7cb;
+    --color-accent-blue: #e3ecf7;
+    --color-accent-green: #e6f4ea;
+    --color-accent-red: #fdecea;
+}
+
+@layer components {
+    .tabs-icon {
+        @apply size-12 items-center justify-center;
+    }
+
+    .tabs-pill {
+        @apply size-12 items-center justify-center rounded-full bg-transparent;
+    }
+
+    .tabs-active {
+        @apply bg-primary;
+    }
+
+    .tabs-glyph {
+        @apply size-6;
+    }
+}
