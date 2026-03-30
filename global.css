@@ -42,6 +42,13 @@
     --color-accent-blue: #e3ecf7;
     --color-accent-green: #e6f4ea;
     --color-accent-red: #fdecea;
+
+    --font-sans: sans-regular;
+    --font-sans-light: sans-light;
+    --font-sans-bold: sans-bold;
+    --font-sans-medium: sans-medium;
+    --font-sans-semibold: sans-semibold;
+    --font-sans-extra-bold: sans-extra-bold;
 }
 
 @layer components {

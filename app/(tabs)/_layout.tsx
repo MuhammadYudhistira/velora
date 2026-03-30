@@ -46,7 +46,6 @@ const TabLayout = () => {
                     top: -4,
                     fontSize: 8,
                     color: "#000000",
-                    fontFamily: "PlayfairDisplay-Regular",
                 },
                 tabBarStyle: {
                     position: "absolute",
