@@ -1,10 +1,11 @@
 import { tabsLeft, tabsRight } from "@/constants/data";
-import { icons } from "@/constants/icons";
 import { components } from "@/constants/theme";
-import clsx from "clsx";
+import { Add02Icon, Wallet01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react-native";
+import { clsx } from "clsx";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const tabBar = components.tabBar;
@@ -16,7 +17,12 @@ const TabLayout = () => {
         return (
             <View className="tabs-icon">
                 <View className={clsx("tabs-pill", focused && "tabs-active")}>
-                    <Image source={icon} className="tabs-glyph" />
+                    <HugeiconsIcon
+                        icon={icon || Wallet01Icon}
+                        size={24}
+                        color={"black"}
+                        strokeWidth={2}
+                    />
                 </View>
             </View>
         );
@@ -27,11 +33,16 @@ const TabLayout = () => {
             <View className="tabs-icon">
                 <View
                     className={clsx(
-                        "size-14 bg-[#C16249] items-center justify-center rounded-full bottom-6",
-                        focused && "bg-[#C16249]/80",
+                        "size-14 bg-primary items-center justify-center rounded-full bottom-6",
+                        focused && "bg-primary/80",
                     )}
                 >
-                    <Image source={icon} className="size-7" />
+                    <HugeiconsIcon
+                        icon={icon || Wallet01Icon}
+                        size={24}
+                        color={"black"}
+                        strokeWidth={2}
+                    />
                 </View>
             </View>
         );
@@ -84,7 +95,7 @@ const TabLayout = () => {
                 options={{
                     title: "Add",
                     tabBarIcon: ({ focused }) => (
-                        <TabAddIcon focused={focused} icon={icons.add} />
+                        <TabAddIcon focused={focused} icon={Add02Icon} />
                     ),
                 }}
             />

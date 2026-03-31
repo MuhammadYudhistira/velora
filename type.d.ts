@@ -1,8 +1,8 @@
-import { ImageSourcePropType } from "react-native";
+import { IconSvgObject } from "@hugeicons/core-free-icons";
 
 declare global {
     interface TabIconProps {
         focused: boolean;
-        icon: ImageSourcePropType;
+        icon: IconSvgObject;
     }
 }

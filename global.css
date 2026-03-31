@@ -4,44 +4,79 @@
 
 @import "nativewind/theme";
 
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+@import "nativewind/theme";
+
+@layer base {
+    :root {
+        --background: #fcf9ef;
+        --card: #ffffff;
+        --border: #e8e5df;
+        --primary: #e07a5f;
+        --secondary: #3d405b;
+        --tertiary: #19a992;
+        --text-primary: #2b2b2b;
+        --text-secondary: #7a7a7a;
+        --text-muted: #a0a0a0;
+        --income: #2ecc71;
+        --expense: #e74c3c;
+        --success: #4caf50;
+        --warning: #f4a261;
+        --danger: #e76f51;
+        --accent-yellow: #f6e7cb;
+        --accent-blue: #e3ecf7;
+        --accent-green: #e6f4ea;
+        --accent-red: #fdecea;
+    }
+
+    .dark {
+        --background: #121212;
+        --card: #1e1e1e;
+        --border: #2a2a2a;
+        --primary: #c9654d;
+        --secondary: #5a5f7a;
+        --tertiary: #4ed9b8;
+        --text-primary: #f5f2ed;
+        --text-secondary: #cfcfcf;
+        --text-muted: #9a9a9a;
+        --income: #2ecc71;
+        --expense: #e74c3c;
+        --success: #4caf50;
+        --warning: #f4a261;
+        --danger: #e76f51;
+        --accent-yellow: #f6e7cb;
+        --accent-blue: #e3ecf7;
+        --accent-green: #e6f4ea;
+        --accent-red: #fdecea;
+    }
+}
+
 @theme {
-    /* Base */
-    --color-background: #fcf9ef;
-    --color-card: #ffffff;
-    --color-border: #e8e5df;
+    --color-background: var(--background);
+    --color-card: var(--card);
+    --color-border: var(--border);
 
-    /* Primary */
-    --color-primary: #ffdbd2;
-    --color-primary-light: #f2a08b;
-    --color-primary-dark: #c9654d;
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-tertiary: var(--tertiary);
 
-    /* Secondary */
-    --color-secondary: #3d405b;
-    --color-secondary-light: #5a5f7a;
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-muted: var(--text-muted);
 
-    /* Tertiary */
-    --color-tertiary: #19a992;
-    --color-tertiary-light: #4ed9b8;
+    --color-income: var(--income);
+    --color-expense: var(--expense);
 
-    /* Text */
-    --color-text-primary: #2b2b2b;
-    --color-text-secondary: #7a7a7a;
-    --color-text-muted: #a0a0a0;
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-danger: var(--danger);
 
-    /* Finance */
-    --color-income: #2ecc71;
-    --color-expense: #e74c3c;
-
-    /* Status */
-    --color-success: #4caf50;
-    --color-warning: #f4a261;
-    --color-danger: #e76f51;
-
-    /* Accent Soft Colors */
-    --color-accent-yellow: #f6e7cb;
-    --color-accent-blue: #e3ecf7;
-    --color-accent-green: #e6f4ea;
-    --color-accent-red: #fdecea;
+    --color-accent-yellow: var(--accent-yellow);
+    --color-accent-blue: var(--accent-blue);
+    --color-accent-green: var(--accent-green);
+    --color-accent-red: var(--accent-red);
 
     --font-sans: sans-regular;
     --font-sans-light: sans-light;
